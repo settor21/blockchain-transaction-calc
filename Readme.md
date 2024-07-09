@@ -6,12 +6,13 @@ The calculator in Scala manages transactions involving accounts identified by ad
 
 #### addAmount Function
 
-This function adds a specified amount to an account identified by its address. 
+This function adds a specified amount to an account identified by its address.
 If the address exists, it updates the existing amount; if not, it creates a new entry.
 
 #### subtractAmount Function
 
 This function subtracts a specified amount from an account identified by its address and returns an Either type:
+
 - Right(accounts) if successful and the resulting amount is non-negative.
 - Left(TransactionError) if there is an issue, such as insufficient funds or attempting to subtract from a non-existing account.
 
@@ -50,18 +51,25 @@ An integration test evaluates the calculator's performance under production cond
 ### Production Testing
 
 Components include:
+
 - **RandomDataGenerator:** Generates random addresses and amounts.
 - **MultithreadedCompute:** Executes concurrent computations across multiple threads.
 - **IntegrationTest:** Validates performance under load using Scala's asynchronous capabilities.
 
 ### Running Instructions
 
+Install:
+
+**sbt** https://www.scala-sbt.org/1.x/docs/Setup.html
+**scala** https://www.scala-lang.org/download/
+
 ```shell
-# Install sbt and scala
-# Clone repository
-# Navigate to project folder and execute:
+# Clone this repository
+# Navigate to project folder in terminal and execute:
 $ sbt clean compile
+# Sample use of application
 $ sbt run
+#Functional and production tests for application
 $ sbt "*testOnly UnitTests.scala"
 $ sbt "*testOnly IntegrationTest.scala"
 
